@@ -1,0 +1,73 @@
+#+title: Anim
+
+* Scope
+- An extensible animation Framework, for game animation and video creation
+- Preview using Raylib rendering with ffmpeg
+- versitile
+- Draw custom defined Paths
+- Load Paths from SVGs
+- Audio support
+- Interactive Aplications ::
+  Panes get information about local Mouse Position,
+
+* Example
+** TimeLineScript
+#+begin_example C++
+struct TimeLine{
+    ValRef<Tics> tics; // settings for tickmarks
+    ValRef<float> offset;
+    ValRef<std::vector<DateMark>> markers;
+
+
+
+}
+#+end_example
+** Raycaster
+Side-By-Side 3D view and top view, one Player=(ValRef)
+life updating
+
+
+
+* Modules
+** DONE ValRef
+Wrapper for Value Tracker
+either hold value or reference to value
+
+- [X] Wrap Value
+- [X] Wrap Reference
+- [X] Allow Value Linking ::
+  when linking with owned value make data shared pointer
+
+
+** TODO Tesselation
+For GPU acceleration triangulate Filled-Paths before rendering
+
+*** Canidates
+**** [[https://github.com/ivanfratric/polypartition/tree/master][polypartition]]
+- Single Header
+- MIT License
+- Multiple algorithms
+- C++
+
+** TODO Scene
+- A Scene is a group of Objects or sub-scenes
+which can expose parameters (ex. ValRef) to control it.
+- A Scene can also be rendered onto a Pane
+- Panes combine to a full image
+- Scenes have a reference to parent Scene to check their attributes ex. width height,
+  for interactive taks ex. mouse to local space
+
+** TODO Panes
+Render Scenes onto Textures
+
+
+** TODO Masking
+Define Mask as Viewing Frame of Pane, idealy shrink render region to observable bounding Box
+
+** TODO Preview
+
+
+* Render Process
+- Support for user defined Software render and GPU accelerated Hardware Render
+- Renering in Panes \to combine in whole frame
+  Allow masking and FX on panes
